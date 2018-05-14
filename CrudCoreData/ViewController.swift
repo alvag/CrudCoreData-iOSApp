@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             self.txtEdad.text = ""
             self.switchStatus.isOn = false
         } catch let err as NSError {
-            print("No se guardaron los datos", err)
+            print("Error al guardar los datos", err)
         }
     }
     
@@ -67,9 +67,22 @@ class ViewController: UIViewController {
             }
             
         } catch let err as NSError {
-            print("No hay datos", err)
+            print("Error al obtener los datos", err)
         }
     }
+    
+    @IBAction func deleteAll(_ sender: UIButton) {
+        let context = self.conexion()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Persona")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try context.execute(deleteRequest)
+        } catch let err as NSError {
+            print("Error al borrar los datos", err)
+        }
+    }
+    
     
 }
 
