@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         //self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    // manageContext
     func conexion() -> NSManagedObjectContext {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         return delegate.persistentContainer.viewContext
